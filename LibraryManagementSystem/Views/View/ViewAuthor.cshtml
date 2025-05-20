@@ -1,5 +1,25 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<LibraryManagementSystem.Models.Author>
+
+<h2>Author List</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Biography</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.ID</td>
+                <td>@author.Name</td>
+                <td>@author.Biography</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("AddAuthor", "Add")" class="btn btn-primary">Add New Author</a>

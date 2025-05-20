@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using LibraryManagementSystem.Data;
+using LibraryManagementSystem.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,5 +43,6 @@ app.MapControllerRoute(
 
 
 app.MapRazorPages();
+
 
 app.Run();
