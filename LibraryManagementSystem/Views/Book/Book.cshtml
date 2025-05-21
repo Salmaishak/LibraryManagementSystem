@@ -17,6 +17,17 @@
                 <td>@Book.ID</td>
                 <td>@Book.Title</td>
                 <td>@Book.Description</td>
+                <td>
+                    <a asp-route-id="@Book.ID" asp-controller="Book"  asp-action="EditBookGet"
+                       class="btn btn-sm btn-warning">Edit</a>
+                </td>
+
+                <td>
+                    <form asp-route-id="@Book.ID" asp-action="DeleteBook" method="post" onsubmit="return confirm('Are you sure you want to delete this Book?');">
+                        <button type="submit" class="btn btn-sm btn-warning">Delete</button>
+                    </form>
+                </td>
+
             </tr>
         }
     </tbody>
@@ -24,3 +35,4 @@
 
 
 
+<a href="@Url.Action("AddBook", "Book")" class="btn btn-primary">Add Book</a>

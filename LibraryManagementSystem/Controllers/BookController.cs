@@ -14,13 +14,21 @@ namespace LibraryManagementSystem.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult AddBook()
+        {
+            return View();
+
+        }
+
         [HttpPost]
-        public IActionResult AddBook(Book book)
+        public async Task<IActionResult> AddBook(Book book)
         {
 
             _context.Add(book);
             _context.SaveChanges();
-            return View("Book",book);
+            var books = await _context.books.ToListAsync();
+            return View("Book", books);
 
         }
             
@@ -30,6 +38,48 @@ namespace LibraryManagementSystem.Controllers
             var books = await _context.books.ToListAsync();
             return View("Book",books);
 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditBookGet(int id)
+        {
+            var book = await _context.books.FindAsync(id);
+
+            if (book == null)
+            {
+                return NoContent();
+            }
+
+            return View("EditBook", book);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> EditBook(Book book)
+        {
+            _context.books.Update(book);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("ViewBook");
+
+
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteBook(int ID)
+        {
+            var book = await _context.books.FindAsync(ID);
+
+            if (book != null)
+            {
+                _context.books.Remove(book);
+                await _context.SaveChangesAsync();
+            }
+
+
+            var books = await _context.books.ToListAsync();
+            return View("Book", books);
         }
 
 
