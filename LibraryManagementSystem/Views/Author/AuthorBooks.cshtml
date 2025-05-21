@@ -1,0 +1,14 @@
+﻿@model LibraryManagementSystem.Models.Author
+
+<h2>@Model.Name's Books</h2>
+
+<form method="get" action="@Url.Action("SearchBooks", "Author", new { authorId = Model.ID })">
+    <input type="text" name="searchTerm" placeholder="Search books..." class="form-control" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<h3>Books</h3>
+
+<div id="bookList">
+    @Html.Partial("BookList", Model.Books)
+</div>

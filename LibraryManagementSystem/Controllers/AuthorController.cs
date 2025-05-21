@@ -62,7 +62,13 @@ namespace LibraryManagementSystem.Controllers
             return View("EditAuthor",author); 
         }
 
-        
+        [HttpGet]
+        public IActionResult AuthorBooks()
+        {
+           
+
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> EditAuthor(Author author)
@@ -76,6 +82,35 @@ namespace LibraryManagementSystem.Controllers
         }
 
 
+
+        public async Task<IActionResult> ViewAuthorWithBooks(int id)
+        {
+            var author = await _context.authors.Include(a => a.Books)
+                                               .FirstOrDefaultAsync(a => a.ID == id);
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            return View(author);  
+        }
+
+        public async Task<IActionResult> SearchBooks(int authorId, string searchTerm)
+        {
+            var author = await _context.authors.Include(a => a.Books)
+                                               .FirstOrDefaultAsync(a => a.ID == authorId);
+
+            if (author == null)
+            {
+                return NotFound();
+            }
+
+            var books = string.IsNullOrEmpty(searchTerm)
+                ? author.Books
+                : author.Books.Where(b => b.Title.Contains(searchTerm)).ToList();
+
+            return PartialView("BookList", books);
+        }
 
 
 
