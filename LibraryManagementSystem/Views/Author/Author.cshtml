@@ -1,0 +1,42 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Author>
+
+<h2>Author List</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Biography</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.ID</td>
+                <td>@author.Name</td>
+                <td>@author.Biography</td>
+                <td>@author.Birthdate</td>
+                <td>
+                    <a asp-route-id="@author.ID" asp-controller="Author" asp-action="EditAuthorGet"
+                       class="btn btn-sm btn-warning">Edit</a>
+                </td>
+               
+                <td>
+                    <form asp-route-id="@author.ID" asp-action="DeleteAuthor" method="post" onsubmit="return confirm('Are you sure you want to delete this author?');">
+                        <button type="submit" class="btn btn-sm btn-warning">Delete</button>
+                    </form>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("AddAuthor", "Author")" class="btn btn-primary">Add Author</a>
+
+
+
+
+
