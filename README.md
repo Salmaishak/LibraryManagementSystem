@@ -4,6 +4,7 @@
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-Used-blue)](https://www.microsoft.com/en-us/sql-server)
 [![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-Used-green)](https://dotnet.microsoft.com/apps/aspnet)
 [![ASP.NET](https://img.shields.io/badge/ASP.NET-Used-blueviolet)](https://dotnet.microsoft.com/apps/aspnet)
+[![ASP.NET MVC](https://img.shields.io/badge/ASP.NET%20MVC-Used-blueviolet)](https://dotnet.microsoft.com/apps/aspnet)
 ## Models
 1. Author
 2. Book
