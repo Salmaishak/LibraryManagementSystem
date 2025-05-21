@@ -1,4 +1,4 @@
-# Library Management System ASP.NET MVC 
+# Library Management System ASP.NET Core MVC 
 
 ## Models
 1. Author
